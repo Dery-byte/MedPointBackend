@@ -32,11 +32,11 @@ spring:
   config:
     activate:
       on-profile: dev
-  datasource:
-    url: jdbc:mysql://localhost:3306/medpointdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: EMMARESCUE
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/medpointdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: EMMARESCUE
   jpa:
     hibernate:
       ddl-auto: update
@@ -45,18 +45,18 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
 
 ---
-spring:
-  config:
-    activate:
-      on-profile: prod
-  datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:medpointdb}?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DB_USERNAME:medpoint}
-    password: ${DB_PASSWORD:medpoint}
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+#spring:
+#  config:
+#    activate:
+#      on-profile: prod
+#  datasource:
+#    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:medpointdb}?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: ${DB_USERNAME:medpoint}
+#    password: ${DB_PASSWORD:medpoint}
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQLDialect
