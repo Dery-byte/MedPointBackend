@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:medpointdb}?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://mysql-207432-0.cloudclusters.net:10047/medpointdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DB_USERNAME:medpoint}
-    password: ${DB_PASSWORD:medpoint}
+    username: mudita
+    password: EMM@RESCUe12
 
   jpa:
     hibernate:

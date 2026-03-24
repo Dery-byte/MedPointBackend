@@ -37,6 +37,7 @@ public class MartServiceImpl implements MartService {
     @Transactional
     public ProductResponse createProduct(ProductRequest req) {
         Product p = Product.builder()
+                .costPrice(req.getCostPrice())
                 .name(req.getName()).category(req.getCategory())
                 .price(req.getPrice()).stock(req.getStock()).build();
         return toResponse(productRepo.save(p));
@@ -48,6 +49,7 @@ public class MartServiceImpl implements MartService {
         Product p = findProduct(id);
         p.setName(req.getName()); p.setCategory(req.getCategory());
         p.setPrice(req.getPrice()); p.setStock(req.getStock());
+        p.setCostPrice(req.getCostPrice());
         return toResponse(productRepo.save(p));
     }
 
@@ -127,7 +129,7 @@ public class MartServiceImpl implements MartService {
     private ProductResponse toResponse(Product p) {
         return ProductResponse.builder()
                 .id(p.getId()).name(p.getName()).category(p.getCategory())
-                .price(p.getPrice()).stock(p.getStock()).active(p.isActive())
+                .price(p.getPrice()).stock(p.getStock()).active(p.isActive()).costPrice(p.getCostPrice())
                 .lowStock(p.getStock() <= LOW_STOCK_THRESHOLD).build();
     }
 

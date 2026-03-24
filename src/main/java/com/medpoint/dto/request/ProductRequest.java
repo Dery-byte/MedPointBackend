@@ -8,5 +8,10 @@ public class ProductRequest {
     @NotBlank private String name;
     @NotBlank private String category;
     @NotNull @DecimalMin("0.00") private BigDecimal price;
+
+
+    @NotNull @DecimalMin("0.00") private BigDecimal costPrice;
+
+
     @Min(0) private int stock;
 }

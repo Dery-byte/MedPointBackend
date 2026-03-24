@@ -19,6 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MartController {
     private final MartService martService;
+
+
     @GetMapping("/products")
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
         return ResponseEntity.ok(martService.getAllProducts());

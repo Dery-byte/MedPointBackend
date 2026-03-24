@@ -9,6 +9,7 @@ public class ProductResponse {
     private String name;
     private String category;
     private BigDecimal price;
+    private BigDecimal costPrice;
     private int stock;
     private boolean active;
     private boolean lowStock;

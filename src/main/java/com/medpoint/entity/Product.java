@@ -28,6 +28,13 @@ public class Product {
     @DecimalMin("0.00")
     private BigDecimal price;
 
+
+
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    @DecimalMin("0.00")
+    private BigDecimal costPrice;
+
     @Column(nullable = false)
     @Min(0)
     private int stock;
