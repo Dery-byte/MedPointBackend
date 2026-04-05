@@ -29,6 +29,13 @@ public class NonDrugItem {
     @DecimalMin("0.00")
     private BigDecimal price;
 
+    @Column(nullable = true, precision = 10, scale = 2)
+    private BigDecimal costPrice;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private int stock = 0;
+
     @Column(nullable = false)
     @Builder.Default
     private boolean active = true;

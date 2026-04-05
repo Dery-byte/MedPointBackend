@@ -7,7 +7,8 @@ public enum TxModule {
     DRUGSTORE,
     MART,
     HOTEL,
-    RESTAURANT;
+    RESTAURANT,
+    STORE;
 
     public String toKey() { return name().toLowerCase(); }
 }

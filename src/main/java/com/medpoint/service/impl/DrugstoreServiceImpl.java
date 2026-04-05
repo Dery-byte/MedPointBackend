@@ -46,8 +46,8 @@ public class DrugstoreServiceImpl implements DrugstoreService {
     public DrugResponse createDrug(DrugRequest req) {
         Drug drug = Drug.builder()
                 .name(req.getName()).category(req.getCategory())
-                .price(req.getPrice()).stock(req.getStock())
-                .expiryDate(req.getExpiryDate()).build();
+                .price(req.getPrice()).costPrice(req.getCostPrice())
+                .stock(req.getStock()).expiryDate(req.getExpiryDate()).build();
         return toDrugResponse(drugRepo.save(drug));
     }
 
@@ -56,8 +56,8 @@ public class DrugstoreServiceImpl implements DrugstoreService {
     public DrugResponse updateDrug(Long id, DrugRequest req) {
         Drug drug = findDrug(id);
         drug.setName(req.getName()); drug.setCategory(req.getCategory());
-        drug.setPrice(req.getPrice()); drug.setStock(req.getStock());
-        drug.setExpiryDate(req.getExpiryDate());
+        drug.setPrice(req.getPrice()); drug.setCostPrice(req.getCostPrice());
+        drug.setStock(req.getStock()); drug.setExpiryDate(req.getExpiryDate());
         return toDrugResponse(drugRepo.save(drug));
     }
 
@@ -96,7 +96,8 @@ public class DrugstoreServiceImpl implements DrugstoreService {
     @Transactional
     public MedicalServiceResponse createService(MedicalServiceRequest req) {
         MedicalService svc = MedicalService.builder()
-                .name(req.getName()).category(req.getCategory()).price(req.getPrice()).build();
+                .name(req.getName()).category(req.getCategory())
+                .price(req.getPrice()).costPrice(req.getCostPrice()).build();
         return toSvcResponse(svcRepo.save(svc));
     }
 
@@ -104,7 +105,8 @@ public class DrugstoreServiceImpl implements DrugstoreService {
     @Transactional
     public MedicalServiceResponse updateService(Long id, MedicalServiceRequest req) {
         MedicalService svc = findService(id);
-        svc.setName(req.getName()); svc.setCategory(req.getCategory()); svc.setPrice(req.getPrice());
+        svc.setName(req.getName()); svc.setCategory(req.getCategory());
+        svc.setPrice(req.getPrice()); svc.setCostPrice(req.getCostPrice());
         return toSvcResponse(svcRepo.save(svc));
     }
 
@@ -135,7 +137,9 @@ public class DrugstoreServiceImpl implements DrugstoreService {
     @Transactional
     public NonDrugItemResponse createNonDrugItem(NonDrugItemRequest req) {
         NonDrugItem item = NonDrugItem.builder()
-                .name(req.getName()).category(req.getCategory()).price(req.getPrice()).build();
+                .name(req.getName()).category(req.getCategory())
+                .price(req.getPrice()).costPrice(req.getCostPrice())
+                .stock(req.getStock()).build();
         return toNdResponse(ndRepo.save(item));
     }
 
@@ -143,7 +147,9 @@ public class DrugstoreServiceImpl implements DrugstoreService {
     @Transactional
     public NonDrugItemResponse updateNonDrugItem(Long id, NonDrugItemRequest req) {
         NonDrugItem item = findNonDrug(id);
-        item.setName(req.getName()); item.setCategory(req.getCategory()); item.setPrice(req.getPrice());
+        item.setName(req.getName()); item.setCategory(req.getCategory());
+        item.setPrice(req.getPrice()); item.setCostPrice(req.getCostPrice());
+        item.setStock(req.getStock());
         return toNdResponse(ndRepo.save(item));
     }
 
@@ -161,6 +167,14 @@ public class DrugstoreServiceImpl implements DrugstoreService {
         NonDrugItem item = findNonDrug(id);
         item.setPrice(req.getPrice());
         return toNdResponse(ndRepo.save(item));
+    }
+
+    // ── Bulk Operations ───────────────────────────────────────────────────────
+
+    @Override
+    @Transactional
+    public List<DrugResponse> bulkCreateDrugs(List<DrugRequest> drugs) {
+        return drugs.stream().map(this::createDrug).toList();
     }
 
     // ── Dispense Operations ───────────────────────────────────────────────────
@@ -232,6 +246,13 @@ public class DrugstoreServiceImpl implements DrugstoreService {
                     unitPrice = drug.getPrice(); name = drug.getName(); category = drug.getCategory();
                 } else {
                     NonDrugItem nd = findNonDrug(item.getItemId());
+                    if (nd.getStock() > 0 && nd.getStock() < item.getQuantity()) {
+                        throw new BusinessException("Insufficient stock for: " + nd.getName());
+                    }
+                    if (nd.getStock() > 0) {
+                        nd.setStock(nd.getStock() - item.getQuantity());
+                        ndRepo.save(nd);
+                    }
                     unitPrice = nd.getPrice(); name = nd.getName(); category = nd.getCategory();
                 }
                 BigDecimal subtotal = unitPrice.multiply(BigDecimal.valueOf(item.getQuantity()));
@@ -290,19 +311,21 @@ public class DrugstoreServiceImpl implements DrugstoreService {
     DrugResponse toDrugResponse(Drug d) {
         return DrugResponse.builder()
                 .id(d.getId()).name(d.getName()).category(d.getCategory())
-                .price(d.getPrice()).stock(d.getStock()).expiryDate(d.getExpiryDate())
+                .price(d.getPrice()).costPrice(d.getCostPrice())
+                .stock(d.getStock()).expiryDate(d.getExpiryDate())
                 .active(d.isActive()).lowStock(d.getStock() <= LOW_STOCK_THRESHOLD)
                 .expiryStatus(expiryStatus(d)).build();
     }
     MedicalServiceResponse toSvcResponse(MedicalService s) {
         return MedicalServiceResponse.builder()
                 .id(s.getId()).name(s.getName()).category(s.getCategory())
-                .price(s.getPrice()).active(s.isActive()).build();
+                .price(s.getPrice()).costPrice(s.getCostPrice()).active(s.isActive()).build();
     }
     NonDrugItemResponse toNdResponse(NonDrugItem n) {
         return NonDrugItemResponse.builder()
                 .id(n.getId()).name(n.getName()).category(n.getCategory())
-                .price(n.getPrice()).active(n.isActive()).build();
+                .price(n.getPrice()).costPrice(n.getCostPrice())
+                .stock(n.getStock()).active(n.isActive()).build();
     }
     TransactionResponse toTxResponse(Transaction t) {
         return TransactionResponse.builder()

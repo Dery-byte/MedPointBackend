@@ -24,6 +24,17 @@ public class JwtService {
         return generateToken(new HashMap<>(), userDetails);
     }
 
+    /** Generate token with embedded type claim ("staff" or "customer"). */
+    public String generateToken(UserDetails userDetails, String tokenType) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("type", tokenType);
+        return generateToken(claims, userDetails);
+    }
+
+    public String extractTokenType(String token) {
+        return extractClaim(token, c -> c.get("type", String.class));
+    }
+
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         return Jwts.builder()
                 .claims(extraClaims)

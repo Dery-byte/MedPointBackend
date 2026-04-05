@@ -11,7 +11,11 @@ public interface HotelService {
 
     List<RoomResponse> getAllRooms();
     RoomResponse addRoom(AddRoomRequest req);
+    RoomResponse updateRoom(Long id, UpdateRoomRequest req);
     void deleteRoom(Long id);
+
+    BookingResponse addExtrasToBooking(Long bookingId, AddBookingExtrasRequest req);
+    BookingResponse updateBooking(Long bookingId, UpdateBookingRequest req);
 
     List<RoomExtraResponse> getAllExtras();
     List<BookingResponse> getAllBookings();

@@ -29,6 +29,9 @@ public class Drug {
     @DecimalMin("0.00")
     private BigDecimal price;
 
+    @Column(nullable = true, precision = 10, scale = 2)
+    private BigDecimal costPrice;
+
     @Column(nullable = false)
     @Min(0)
     private int stock;
