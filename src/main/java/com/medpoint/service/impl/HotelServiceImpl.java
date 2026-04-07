@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +91,27 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override @Transactional
+    public RoomResponse updateRoom(Long id, UpdateRoomRequest req) {
+        Room room = roomRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Room", id));
+        if (req.getRoomNumber() != null && !req.getRoomNumber().equals(room.getRoomNumber())) {
+            if (roomRepo.existsByRoomNumber(req.getRoomNumber()))
+                throw new BusinessException("Room number already exists: " + req.getRoomNumber());
+            room.setRoomNumber(req.getRoomNumber());
+        }
+        if (req.getCategoryId() != null) {
+            RoomCategory cat = catRepo.findById(req.getCategoryId())
+                    .orElseThrow(() -> new ResourceNotFoundException("RoomCategory", req.getCategoryId()));
+            room.setCategory(cat);
+        }
+        if (req.getStatus() != null) {
+            try {
+                room.setStatus(RoomStatus.valueOf(req.getStatus().toUpperCase()));
+            } catch (IllegalArgumentException ignored) { }
+        }
+        return toRoomResponse(roomRepo.save(room));
+    }
+
+    @Override @Transactional
     public void deleteRoom(Long id) {
         Room room = roomRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Room", id));
         if (room.getStatus() == RoomStatus.OCCUPIED)
@@ -109,6 +131,53 @@ public class HotelServiceImpl implements HotelService {
     public List<BookingResponse> getAllBookings() {
         return bookingRepo.findByPaidFalse().stream()
                 .map(b -> toBookingResponse(b, b.getRoom())).toList();
+    }
+
+    @Override @Transactional
+    public BookingResponse addExtrasToBooking(Long bookingId, AddBookingExtrasRequest req) {
+        Booking booking = bookingRepo.findById(bookingId)
+                .orElseThrow(() -> new ResourceNotFoundException("Booking", bookingId));
+        if (booking.isPaid())
+            throw new BusinessException("Cannot modify a checked-out booking.");
+
+        for (Long extraId : req.getExtraIds()) {
+            RoomExtra extra = extraRepo.findById(extraId)
+                    .orElseThrow(() -> new ResourceNotFoundException("RoomExtra", extraId));
+            booking.getExtras().add(BookingExtra.builder()
+                    .name(extra.getName()).price(extra.getPrice()).build());
+        }
+        BigDecimal extrasTotal = booking.getExtras().stream()
+                .map(BookingExtra::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        long nights = java.time.temporal.ChronoUnit.DAYS.between(booking.getCheckIn(), booking.getCheckOut());
+        if (nights < 1) nights = 1;
+        BigDecimal base = booking.getRoom().getCategory().getPricePerNight().multiply(BigDecimal.valueOf(nights));
+        booking.setTotalCharged(base.add(extrasTotal));
+        bookingRepo.save(booking);
+
+        return toBookingResponse(booking, booking.getRoom());
+    }
+
+    @Override @Transactional
+    public BookingResponse updateBooking(Long bookingId, UpdateBookingRequest req) {
+        Booking booking = bookingRepo.findById(bookingId)
+                .orElseThrow(() -> new ResourceNotFoundException("Booking", bookingId));
+        if (booking.isPaid())
+            throw new BusinessException("Cannot modify a checked-out booking.");
+        if (!req.getCheckOut().isAfter(booking.getCheckIn()))
+            throw new BusinessException("Check-out date must be after check-in date.");
+        booking.setCheckOut(req.getCheckOut());
+
+        long nights = java.time.temporal.ChronoUnit.DAYS.between(booking.getCheckIn(), req.getCheckOut());
+        if (nights < 1) nights = 1;
+        BigDecimal base = booking.getRoom().getCategory().getPricePerNight().multiply(BigDecimal.valueOf(nights));
+        BigDecimal extrasTotal = booking.getExtras().stream()
+                .map(BookingExtra::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
+        booking.setTotalCharged(base.add(extrasTotal));
+        bookingRepo.save(booking);
+
+        return toBookingResponse(booking, booking.getRoom());
     }
 
     /**
@@ -237,6 +306,6 @@ public class HotelServiceImpl implements HotelService {
                         .id(li.getId()).name(li.getName()).category(li.getCategory())
                         .kind(li.getKind()).quantity(li.getQuantity())
                         .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
-                .createdAt(t.getCreatedAt()).build();
+                .createdAt(Instant.from(t.getCreatedAt())).build();
     }
 }

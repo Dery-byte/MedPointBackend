@@ -2,7 +2,6 @@
 package com.medpoint.dto.response;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.List;
 
 public record ServiceReceiptResponse(
@@ -11,7 +10,7 @@ public record ServiceReceiptResponse(
         BigDecimal      svcTotal,
         BigDecimal      itemTotal,
         BigDecimal      grandTotal,
-        Instant         issuedAt,
+        java.time.LocalDateTime issuedAt,
         List<LineDto>   lineItems
 ) {
     public record LineDto(

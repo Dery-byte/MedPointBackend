@@ -27,6 +27,9 @@ public interface DrugstoreService {
     void deleteNonDrugItem(Long id);
     NonDrugItemResponse updateNonDrugItemPrice(Long id, PriceUpdateRequest request);
 
+    // Bulk imports
+    List<DrugResponse> bulkCreateDrugs(List<DrugRequest> drugs);
+
     // Dispense operations
     TransactionResponse dispense(DrugDispenseRequest request, Long staffId);
     TransactionResponse dispenseService(ServiceDispenseRequest request, Long staffId);

@@ -1,9 +1,13 @@
 package com.medpoint.service;
+import com.medpoint.dto.paystackdto.PaymentResponse;
 import com.medpoint.dto.request.DispenseIssueRequest;
 import com.medpoint.dto.request.ServiceIssueRequest;
 import com.medpoint.dto.request.TransactionFilterRequest;
 import com.medpoint.dto.response.ServiceReceiptResponse;
 import com.medpoint.dto.response.TransactionResponse;
+import com.medpoint.entity.Transaction;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -19,4 +23,7 @@ public interface TransactionService {
     @Transactional
     ServiceReceiptResponse dispense(DispenseIssueRequest request, Long staffId); // new
 
+    PaymentResponse getByReference(String reference);
+
+    Page<Transaction> listAll(Pageable pageable);
 }

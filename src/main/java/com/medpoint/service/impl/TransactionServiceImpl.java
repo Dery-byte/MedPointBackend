@@ -1,4 +1,5 @@
 package com.medpoint.service.impl;
+import com.medpoint.dto.paystackdto.PaymentResponse;
 import com.medpoint.dto.request.DispenseIssueRequest;
 import com.medpoint.dto.request.ServiceIssueRequest;
 import com.medpoint.dto.request.TransactionFilterRequest;
@@ -20,6 +21,8 @@ import com.medpoint.repository.TransactionRepository;
 import com.medpoint.repository.UserRepository;
 import com.medpoint.service.TransactionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -114,7 +117,7 @@ public class TransactionServiceImpl implements TransactionService {
                         .kind(li.getKind()).quantity(li.getQuantity())
                         .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
                 .cancelledByName(t.getCancelledBy() != null ? t.getCancelledBy().getName() : null)
-                .cancelledAt(t.getCancelledAt()).createdAt(t.getCreatedAt()).build();
+                .cancelledAt(t.getCancelledAt()).createdAt(Instant.from(t.getCreatedAt())).build();
     }
 
 
@@ -383,11 +386,6 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
 
-
-
-
-
-
     @Transactional
     @Override
     public ServiceReceiptResponse dispense(DispenseIssueRequest req, Long staffId) {
@@ -467,4 +465,21 @@ public class TransactionServiceImpl implements TransactionService {
                 lineDtos
         );
     }
+
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public PaymentResponse getByReference(String reference) {
+        Transaction tx = txRepo.findByReference(reference)
+                .orElseThrow(() -> new IllegalArgumentException("Transaction not found: " + reference));
+        return PaymentResponse.from(tx, "Transaction retrieved.");
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Transaction> listAll(Pageable pageable) {
+        return txRepo.findAll(pageable);
+    }
+
 }

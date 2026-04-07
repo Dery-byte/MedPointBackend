@@ -1,4 +1,5 @@
 package com.medpoint.controller;
+import com.medpoint.dto.paystackdto.PaymentResponse;
 import com.medpoint.dto.request.DispenseIssueRequest;
 import com.medpoint.dto.request.MartCheckoutRequest;
 import com.medpoint.dto.request.ServiceIssueRequest;
@@ -16,6 +17,9 @@ import com.medpoint.exception.ResourceNotFoundException;
 import com.medpoint.service.TransactionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -77,6 +81,17 @@ public class TransactionController {
 
 
 
+    /** GET /api/transactions/{reference} */
+    @GetMapping("/{reference}")
+    public ResponseEntity<PaymentResponse> getTransaction(@PathVariable String reference) {
+        return ResponseEntity.ok(transactionService.getByReference(reference));
+    }
 
+    /** GET /api/transactions?page=0&size=20&sort=createdAt,desc */
+    @GetMapping("/getAllOnlinetransaction")
+    public ResponseEntity<Page<Transaction>> listTransactions(
+            @PageableDefault(size = 20, sort = "createdAt") Pageable pageable) {
+        return ResponseEntity.ok(transactionService.listAll(pageable));
+    }
 
 }

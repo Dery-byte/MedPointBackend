@@ -4,14 +4,36 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: mudita
     password: EMM@RESCUe12
-
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: emmanuelderryshare@gmail.com
+    password: xkgafkycoljlxvew
+    protocol: smtp
+    properties:
+      mail:
+        debug: false
+        smtp:
+          auth: true
+          starttls:
+            enable: true       # ✅ corrected
+            required: true     # ✅ optional but good to include
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+          ssl:
+            trust: smtp.gmail.com
 logging:
   level:
     com.medpoint: INFO
+mnotify:
+  v2:
+    url: https://api.mnotify.com/api/sms/quick
+    key: oWmpfPGz22BObP6ng9Zjb0Xe4
+    sender-id: OPTUMSERV

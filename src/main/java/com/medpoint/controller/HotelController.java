@@ -60,6 +60,13 @@ public class HotelController {
         return ResponseEntity.status(HttpStatus.CREATED).body(hotelService.addRoom(req));
     }
 
+    @PutMapping("/rooms/{id}")
+    @PreAuthorize("hasRole('SUPERADMIN') or @permissionGuard.canManageHotel(authentication)")
+    public ResponseEntity<RoomResponse> updateRoom(@PathVariable Long id,
+                                                    @RequestBody UpdateRoomRequest req) {
+        return ResponseEntity.ok(hotelService.updateRoom(id, req));
+    }
+
     @DeleteMapping("/rooms/{id}")
     @PreAuthorize("hasRole('SUPERADMIN') or @permissionGuard.canManageHotel(authentication)")
     public ResponseEntity<ApiResponse<Void>> deleteRoom(@PathVariable Long id) {
@@ -79,6 +86,20 @@ public class HotelController {
     @GetMapping("/bookings")
     public ResponseEntity<List<BookingResponse>> getBookings() {
         return ResponseEntity.ok(hotelService.getAllBookings());
+    }
+
+    /** POST /hotel/bookings/{id}/extras — add extras to an existing booking */
+    @PostMapping("/bookings/{id}/extras")
+    public ResponseEntity<BookingResponse> addExtras(@PathVariable Long id,
+                                                      @Valid @RequestBody AddBookingExtrasRequest req) {
+        return ResponseEntity.ok(hotelService.addExtrasToBooking(id, req));
+    }
+
+    /** PATCH /hotel/bookings/{id} — update booking (e.g. extend stay) */
+    @PatchMapping("/bookings/{id}")
+    public ResponseEntity<BookingResponse> updateBooking(@PathVariable Long id,
+                                                          @Valid @RequestBody UpdateBookingRequest req) {
+        return ResponseEntity.ok(hotelService.updateBooking(id, req));
     }
 
     /**

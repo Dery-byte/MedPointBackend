@@ -29,6 +29,9 @@ public class MedicalService {
     @DecimalMin("0.00")
     private BigDecimal price;
 
+    @Column(nullable = true, precision = 10, scale = 2)
+    private BigDecimal costPrice;
+
     @Column(nullable = false)
     @Builder.Default
     private boolean active = true;

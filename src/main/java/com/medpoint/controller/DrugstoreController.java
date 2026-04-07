@@ -137,6 +137,30 @@ public class DrugstoreController {
         return ResponseEntity.ok(ApiResponse.ok("Service deleted successfully."));
     }
 
+    /** PATCH /drugstore/non-drug-items/{id}/price — update non-drug item price */
+    @PatchMapping("/non-drug-items/{id}/price")
+    @PreAuthorize("hasRole('SUPERADMIN') or @permissionGuard.canManageDrugstore(authentication)")
+    public ResponseEntity<NonDrugItemResponse> updateNonDrugItemPrice(@PathVariable Long id,
+                                                                        @Valid @RequestBody PriceUpdateRequest request) {
+        return ResponseEntity.ok(drugstoreService.updateNonDrugItemPrice(id, request));
+    }
+
+    /** PATCH /drugstore/services/{id}/price — update medical service price */
+    @PatchMapping("/services/{id}/price")
+    @PreAuthorize("hasRole('SUPERADMIN') or @permissionGuard.canManageDrugstore(authentication)")
+    public ResponseEntity<MedicalServiceResponse> updateServicePrice(@PathVariable Long id,
+                                                                       @Valid @RequestBody PriceUpdateRequest request) {
+        return ResponseEntity.ok(drugstoreService.updateServicePrice(id, request));
+    }
+
+    /** POST /drugstore/drugs/bulk — bulk import drugs */
+    @PostMapping("/drugs/bulk")
+    @PreAuthorize("hasRole('SUPERADMIN') or @permissionGuard.canManageDrugstore(authentication)")
+    public ResponseEntity<List<DrugResponse>> bulkCreateDrugs(@Valid @RequestBody BulkDrugRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(drugstoreService.bulkCreateDrugs(request.getDrugs()));
+    }
+
     // ── Dispense ──────────────────────────────────────────────────────────────
 
     /** POST /drugstore/dispense — matches frontend: dispenseDrugs() */
