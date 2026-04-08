@@ -1339,3 +1339,75 @@ Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'PA
         (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
     values
         (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 02:09:14 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 02:09:14 [http-nio-8080-exec-6] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0026
+2026-04-08 02:09:14 [http-nio-8080-exec-6] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0026
+2026-04-08 02:09:14 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 02:09:14 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 02:09:14 [http-nio-8080-exec-2] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0026
+2026-04-08 02:09:14 [http-nio-8080-exec-2] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0026
+2026-04-08 02:09:14 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
