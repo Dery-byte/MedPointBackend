@@ -283,7 +283,7 @@ public class RestaurantServiceImpl implements RestaurantService {
                         .id(li.getId()).name(li.getName()).category(li.getCategory())
                         .kind(li.getKind()).quantity(li.getQuantity())
                         .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
-                .createdAt(t.getCreatedAt()).build();
+                .createdAt(Instant.from(t.getCreatedAt())).build();
     }
 
 

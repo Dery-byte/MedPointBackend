@@ -17,6 +17,7 @@ spring:
       enabled: true
       max-file-size: 5MB
       max-request-size: 10MB
+<<<<<<< HEAD
 
 app:
   upload:
@@ -24,7 +25,14 @@ app:
   base-url: http://localhost:8080/api
   dev-mode: false
 
+=======
+>>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
 
+app:
+  upload:
+    dir: uploads
+  base-url: http://localhost:8080/api
+  dev-mode: false
 server:
   port: 8080
   servlet:

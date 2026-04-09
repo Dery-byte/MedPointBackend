@@ -54,6 +54,18 @@ public class SecurityConfig {
                 .requestMatchers("/customers/register", "/customers/login").permitAll()
                 // Store config: GET is public, PUT requires DEV role
                 .requestMatchers(HttpMethod.GET, "/config").permitAll()
+<<<<<<< HEAD
+=======
+
+                    // Paystack payment endpoints (public)
+                    .requestMatchers("/payments/**").permitAll()
+                    .requestMatchers("/webhooks/**").permitAll()
+                    .requestMatchers("/getAllOnlinetransaction/**").permitAll()
+
+
+
+
+>>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
                 .requestMatchers(HttpMethod.PUT, "/config").hasRole("DEV")
                 // Dev profiles: requires DEV role
                 .requestMatchers("/dev/profiles/**").hasRole("DEV")

@@ -25,6 +25,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+<<<<<<< HEAD
+=======
+import java.time.Instant;
+>>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -334,7 +338,7 @@ public class MartServiceImpl implements MartService {
                         .id(li.getId()).name(li.getName()).category(li.getCategory())
                         .kind(li.getKind()).quantity(li.getQuantity())
                         .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
-                .createdAt(t.getCreatedAt()).build();
+                .createdAt(Instant.from(t.getCreatedAt())).build();
     }
 
 

@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -337,6 +338,6 @@ public class DrugstoreServiceImpl implements DrugstoreService {
                         .kind(li.getKind()).quantity(li.getQuantity())
                         .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
                 .cancelledByName(t.getCancelledBy() != null ? t.getCancelledBy().getName() : null)
-                .cancelledAt(t.getCancelledAt()).createdAt(t.getCreatedAt()).build();
+                .cancelledAt(t.getCancelledAt()).createdAt(Instant.from(t.getCreatedAt())).build();
     }
 }

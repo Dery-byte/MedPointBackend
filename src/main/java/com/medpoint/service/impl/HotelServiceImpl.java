@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -305,6 +306,6 @@ public class HotelServiceImpl implements HotelService {
                         .id(li.getId()).name(li.getName()).category(li.getCategory())
                         .kind(li.getKind()).quantity(li.getQuantity())
                         .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
-                .createdAt(t.getCreatedAt()).build();
+                .createdAt(Instant.from(t.getCreatedAt())).build();
     }
 }

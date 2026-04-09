@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #spring:
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/medpointdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
@@ -15,13 +16,18 @@
 #  api-key: DUMMY_API_KEY_REPLACE_ME
 #  sender-id: MedPoint
 
+=======
+>>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
 mnotify:
   v2:
     url: https://api.mnotify.com/api/sms/quick
     key: oWmpfPGz22BObP6ng9Zjb0Xe4
     sender-id: OPTUMSERV
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/medpointdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
@@ -33,7 +39,10 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
       enabled: true
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
   jpa:
     hibernate:
       ddl-auto: update
@@ -59,7 +68,10 @@ spring:
           writetimeout: 5000
           ssl:
             trust: smtp.gmail.com
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
 logging:
   level:
     root: INFO
@@ -78,4 +90,13 @@ logging:
 
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+<<<<<<< HEAD
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+=======
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+paystack:
+  secret-key: ${PAYSTACK_SECRET_KEY}
+  public-key: ${PAYSTACK_PUBLIC_KEY}
+  base-url: https://api.paystack.co
+  callback-url: http://localhost:8080/api/payments/callback
+>>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a

@@ -1,0 +1,1413 @@
+2026-04-08 00:00:34 [main] INFO  com.medpoint.MedpointApplication - Starting MedpointApplication using Java 21.0.7 with PID 14224 (D:\Project\FULLMEDPOINT\Medpoint-Back\target\classes started by Mudita in D:\Project\FULLMEDPOINT\Medpoint-Back)
+2026-04-08 00:00:34 [main] DEBUG com.medpoint.MedpointApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-08 00:00:34 [main] INFO  com.medpoint.MedpointApplication - The following 1 profile is active: "dev"
+2026-04-08 00:00:39 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-08 00:00:39 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 411 ms. Found 21 JPA repository interfaces.
+2026-04-08 00:00:41 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-08 00:00:41 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-08 00:00:41 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-08 00:00:41 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-04-08 00:00:41 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 7353 ms
+2026-04-08 00:00:42 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-08 00:00:42 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-08 00:00:42 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-08 00:00:43 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-08 00:00:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-08 00:00:43 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70d687b8
+2026-04-08 00:00:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-08 00:00:44 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-08 00:00:47 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-08 00:00:47 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:00:48 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-08 00:00:49 [main] DEBUG com.medpoint.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-08 00:00:49 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+2026-04-08 00:00:49 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:00:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-08 00:00:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-08 00:00:49 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-08 00:00:49 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-08 00:00:49 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.medpoint.MedpointApplication.main(MedpointApplication.java:8)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'PAYSTACK_PUBLIC_KEY' in value "${PAYSTACK_PUBLIC_KEY}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:922)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	... 17 common frames omitted
+2026-04-08 00:01:17 [main] INFO  com.medpoint.MedpointApplication - Starting MedpointApplication using Java 21.0.7 with PID 15700 (D:\Project\FULLMEDPOINT\Medpoint-Back\target\classes started by Mudita in D:\Project\FULLMEDPOINT\Medpoint-Back)
+2026-04-08 00:01:17 [main] DEBUG com.medpoint.MedpointApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-08 00:01:17 [main] INFO  com.medpoint.MedpointApplication - The following 1 profile is active: "dev"
+2026-04-08 00:01:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-08 00:01:21 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 665 ms. Found 21 JPA repository interfaces.
+2026-04-08 00:01:23 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-08 00:01:24 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-08 00:01:24 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-08 00:01:24 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-04-08 00:01:24 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6264 ms
+2026-04-08 00:01:24 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-08 00:01:25 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-08 00:01:25 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-08 00:01:26 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-08 00:01:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-08 00:01:27 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12c76d6e
+2026-04-08 00:01:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-08 00:01:27 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-08 00:01:30 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-08 00:01:31 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:01:32 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-08 00:01:33 [main] DEBUG com.medpoint.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-08 00:01:33 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+2026-04-08 00:01:33 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:01:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-08 00:01:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-08 00:01:33 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-08 00:01:33 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-08 00:01:33 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.medpoint.MedpointApplication.main(MedpointApplication.java:8)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'PAYSTACK_PUBLIC_KEY' in value "${PAYSTACK_PUBLIC_KEY}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:922)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	... 17 common frames omitted
+2026-04-08 00:02:45 [main] INFO  com.medpoint.MedpointApplication - Starting MedpointApplication using Java 21.0.7 with PID 2324 (D:\Project\FULLMEDPOINT\Medpoint-Back\target\classes started by Mudita in D:\Project\FULLMEDPOINT\Medpoint-Back)
+2026-04-08 00:02:45 [main] DEBUG com.medpoint.MedpointApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-08 00:02:45 [main] INFO  com.medpoint.MedpointApplication - The following 1 profile is active: "dev"
+2026-04-08 00:02:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-08 00:02:47 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 310 ms. Found 21 JPA repository interfaces.
+2026-04-08 00:02:49 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-08 00:02:49 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-08 00:02:49 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-08 00:02:49 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-04-08 00:02:49 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3419 ms
+2026-04-08 00:02:49 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-08 00:02:49 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-08 00:02:49 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-08 00:02:50 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-08 00:02:50 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-08 00:02:50 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@54e0f76f
+2026-04-08 00:02:50 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-08 00:02:50 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-08 00:02:53 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-08 00:02:53 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:02:54 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-08 00:02:55 [main] DEBUG com.medpoint.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-08 00:02:55 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+2026-04-08 00:02:55 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:02:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-08 00:02:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-08 00:02:55 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-08 00:02:55 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-08 00:02:55 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.medpoint.MedpointApplication.main(MedpointApplication.java:8)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'PAYSTACK_PUBLIC_KEY' in value "${PAYSTACK_PUBLIC_KEY}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:922)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	... 17 common frames omitted
+2026-04-08 00:33:03 [main] INFO  com.medpoint.MedpointApplication - Starting MedpointApplication using Java 21.0.7 with PID 3688 (D:\Project\FULLMEDPOINT\Medpoint-Back\target\classes started by Mudita in D:\Project\FULLMEDPOINT\Medpoint-Back)
+2026-04-08 00:33:03 [main] DEBUG com.medpoint.MedpointApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-08 00:33:03 [main] INFO  com.medpoint.MedpointApplication - The following 1 profile is active: "dev"
+2026-04-08 00:33:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-08 00:33:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 283 ms. Found 21 JPA repository interfaces.
+2026-04-08 00:33:08 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-08 00:33:08 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-08 00:33:08 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-08 00:33:08 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-04-08 00:33:08 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4529 ms
+2026-04-08 00:33:09 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-08 00:33:09 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-08 00:33:09 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-08 00:33:09 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-08 00:33:10 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-08 00:33:10 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@857f74a
+2026-04-08 00:33:10 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-08 00:33:10 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-08 00:33:13 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-08 00:33:14 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:33:14 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-08 00:33:15 [main] DEBUG com.medpoint.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-08 00:33:15 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+2026-04-08 00:33:15 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:33:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-08 00:33:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-08 00:33:15 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-08 00:33:16 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-08 00:33:16 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.medpoint.MedpointApplication.main(MedpointApplication.java:8)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'PAYSTACK_PUBLIC_KEY' in value "${PAYSTACK_PUBLIC_KEY}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveNestedPlaceholders(AbstractPropertyResolver.java:230)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:80)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:61)
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:552)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:153)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:149)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getPropertyAsRawString(PropertySourcesPropertyResolver.java:74)
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:153)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:922)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	... 17 common frames omitted
+2026-04-08 00:35:32 [main] INFO  com.medpoint.MedpointApplication - Starting MedpointApplication using Java 21.0.7 with PID 14504 (D:\Project\FULLMEDPOINT\Medpoint-Back\target\classes started by Mudita in D:\Project\FULLMEDPOINT\Medpoint-Back)
+2026-04-08 00:35:32 [main] DEBUG com.medpoint.MedpointApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-08 00:35:32 [main] INFO  com.medpoint.MedpointApplication - The following 1 profile is active: "dev"
+2026-04-08 00:35:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-08 00:35:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 258 ms. Found 21 JPA repository interfaces.
+2026-04-08 00:35:35 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-08 00:35:35 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-08 00:35:35 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-08 00:35:35 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-04-08 00:35:35 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3476 ms
+2026-04-08 00:35:36 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-08 00:35:36 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-08 00:35:36 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-08 00:35:37 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-08 00:35:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-08 00:35:37 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6fd7aba8
+2026-04-08 00:35:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-08 00:35:37 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-08 00:35:40 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-08 00:35:40 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:35:40 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-08 00:35:41 [main] DEBUG com.medpoint.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-08 00:35:41 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+2026-04-08 00:35:41 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:35:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-08 00:35:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-08 00:35:41 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-08 00:35:41 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-08 00:35:41 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paystackConfig': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at com.medpoint.MedpointApplication.main(MedpointApplication.java:12)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'PAYSTACK_PUBLIC_KEY' in value "${PAYSTACK_PUBLIC_KEY}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveNestedPlaceholders(AbstractPropertyResolver.java:230)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:80)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:61)
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:552)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:153)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer$1.getProperty(PropertySourcesPlaceholderConfigurer.java:149)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getPropertyAsRawString(PropertySourcesPropertyResolver.java:74)
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:153)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:922)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+	... 17 common frames omitted
+2026-04-08 00:36:16 [main] INFO  com.medpoint.MedpointApplication - Starting MedpointApplication using Java 21.0.7 with PID 15588 (D:\Project\FULLMEDPOINT\Medpoint-Back\target\classes started by Mudita in D:\Project\FULLMEDPOINT\Medpoint-Back)
+2026-04-08 00:36:16 [main] DEBUG com.medpoint.MedpointApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-08 00:36:16 [main] INFO  com.medpoint.MedpointApplication - The following 1 profile is active: "dev"
+2026-04-08 00:36:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-08 00:36:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 255 ms. Found 21 JPA repository interfaces.
+2026-04-08 00:36:19 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-08 00:36:19 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-08 00:36:19 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-08 00:36:19 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-04-08 00:36:19 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3555 ms
+2026-04-08 00:36:20 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-08 00:36:20 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-08 00:36:20 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-08 00:36:20 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-08 00:36:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-08 00:36:20 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@dc8b2ff
+2026-04-08 00:36:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-08 00:36:20 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-08 00:36:23 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-08 00:36:23 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 00:36:24 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-08 00:36:25 [main] DEBUG com.medpoint.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-04-08 00:36:27 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-08 00:36:28 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api'
+2026-04-08 00:36:28 [main] INFO  com.medpoint.MedpointApplication - Started MedpointApplication in 13.729 seconds (process running for 15.349)
+2026-04-08 00:36:28 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-08 00:36:29 [main] INFO  com.medpoint.config.DataSeeder - Database already seeded — skipping.
+2026-04-08 00:36:41 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08 00:36:41 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-08 00:36:41 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2026-04-08 00:36:41 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:36:41 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:36:43 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:36:43 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:36:43 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:36:43 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:36:51 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0 
+    where
+        p1_0.id=?
+2026-04-08 00:36:51 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0 
+    where
+        p1_0.id=?
+2026-04-08 00:36:51 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:36:51 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:37:23 [http-nio-8080-exec-1] INFO  c.m.controller.PaymentController - Initialize payment request | email=immanuelderry31@gmail.com amount=34
+2026-04-08 00:37:23 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        transactions t1_0
+2026-04-08 00:37:23 [http-nio-8080-exec-1] DEBUG c.m.service.impl.PaystackServiceImpl - Initializing Paystack transaction | ref=STR-0023 amount=34
+2026-04-08 00:37:29 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        transactions
+        (access_code, amount, authorization_code, authorization_url, cancelled_at, cancelled_by_id, created_at, currency, description, email, metadata, module, online_status, paystack_id, reference, staff_id, status, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:37:29 [http-nio-8080-exec-1] INFO  c.m.service.impl.PaystackServiceImpl - Transaction saved | ref=STR-0023 status=PENDING
+2026-04-08 00:38:05 [http-nio-8080-exec-6] INFO  c.m.controller.PaymentController - Paystack callback received | ref=STR-0023
+2026-04-08 00:38:05 [http-nio-8080-exec-6] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0023
+2026-04-08 00:38:05 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:38:09 [http-nio-8080-exec-6] INFO  c.m.service.impl.PaystackServiceImpl - Transaction verified | ref=STR-0023 paystackStatus=success
+2026-04-08 00:38:09 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    update
+        transactions 
+    set
+        access_code=?,
+        amount=?,
+        authorization_code=?,
+        authorization_url=?,
+        cancelled_at=?,
+        cancelled_by_id=?,
+        currency=?,
+        description=?,
+        email=?,
+        metadata=?,
+        module=?,
+        online_status=?,
+        paystack_id=?,
+        reference=?,
+        staff_id=?,
+        status=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-08 00:38:12 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:38:12 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:38:12 [http-nio-8080-exec-5] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0023
+2026-04-08 00:38:12 [http-nio-8080-exec-5] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0023
+2026-04-08 00:38:12 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:38:12 [http-nio-8080-exec-4] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0023
+2026-04-08 00:38:12 [http-nio-8080-exec-4] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0023
+2026-04-08 00:38:12 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:38:12 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_orders
+        (address, created_at, customer_id, customer_email, customer_name, delivery_address, payment_method, payment_reference, phone, reference, status, status_changed_at, status_changed_by, total) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:38:12 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_orders
+        (address, created_at, customer_id, customer_email, customer_name, delivery_address, payment_method, payment_reference, phone, reference, status, status_changed_at, status_changed_by, total) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:38:12 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:38:12 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:38:12 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:38:12 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:38:20 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:38:20 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:38:20 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:38:20 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:38:46 [http-nio-8080-exec-4] INFO  c.m.controller.PaymentController - Initialize payment request | email=immanuelderry31@gmail.com amount=55
+2026-04-08 00:38:46 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        transactions t1_0
+2026-04-08 00:38:46 [http-nio-8080-exec-4] DEBUG c.m.service.impl.PaystackServiceImpl - Initializing Paystack transaction | ref=STR-0024 amount=55
+2026-04-08 00:38:50 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        transactions
+        (access_code, amount, authorization_code, authorization_url, cancelled_at, cancelled_by_id, created_at, currency, description, email, metadata, module, online_status, paystack_id, reference, staff_id, status, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:38:50 [http-nio-8080-exec-4] INFO  c.m.service.impl.PaystackServiceImpl - Transaction saved | ref=STR-0024 status=PENDING
+2026-04-08 00:39:06 [http-nio-8080-exec-1] INFO  c.m.controller.PaymentController - Paystack callback received | ref=STR-0024
+2026-04-08 00:39:06 [http-nio-8080-exec-1] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0024
+2026-04-08 00:39:06 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:39:06 [http-nio-8080-exec-1] INFO  c.m.service.impl.PaystackServiceImpl - Transaction verified | ref=STR-0024 paystackStatus=success
+2026-04-08 00:39:06 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    update
+        transactions 
+    set
+        access_code=?,
+        amount=?,
+        authorization_code=?,
+        authorization_url=?,
+        cancelled_at=?,
+        cancelled_by_id=?,
+        currency=?,
+        description=?,
+        email=?,
+        metadata=?,
+        module=?,
+        online_status=?,
+        paystack_id=?,
+        reference=?,
+        staff_id=?,
+        status=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-08 00:39:07 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:39:07 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:39:07 [http-nio-8080-exec-2] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0024
+2026-04-08 00:39:07 [http-nio-8080-exec-2] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0024
+2026-04-08 00:39:07 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:39:07 [http-nio-8080-exec-4] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0024
+2026-04-08 00:39:07 [http-nio-8080-exec-4] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0024
+2026-04-08 00:39:07 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:39:07 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_orders
+        (address, created_at, customer_id, customer_email, customer_name, delivery_address, payment_method, payment_reference, phone, reference, status, status_changed_at, status_changed_by, total) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:07 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:07 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:07 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:07 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_orders
+        (address, created_at, customer_id, customer_email, customer_name, delivery_address, payment_method, payment_reference, phone, reference, status, status_changed_at, status_changed_by, total) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:07 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:07 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:07 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:13 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:39:13 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:39:13 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:39:13 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:39:34 [http-nio-8080-exec-1] INFO  c.m.controller.PaymentController - Initialize payment request | email=immanuelderry31@gmail.com amount=22
+2026-04-08 00:39:34 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        transactions t1_0
+2026-04-08 00:39:34 [http-nio-8080-exec-1] DEBUG c.m.service.impl.PaystackServiceImpl - Initializing Paystack transaction | ref=STR-0025 amount=22
+2026-04-08 00:39:35 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        transactions
+        (access_code, amount, authorization_code, authorization_url, cancelled_at, cancelled_by_id, created_at, currency, description, email, metadata, module, online_status, paystack_id, reference, staff_id, status, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:39:35 [http-nio-8080-exec-1] INFO  c.m.service.impl.PaystackServiceImpl - Transaction saved | ref=STR-0025 status=PENDING
+2026-04-08 00:39:46 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:39:46 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:39:50 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:39:50 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:39:50 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:39:50 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:39:51 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:39:51 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:39:51 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.name 
+    from
+        categories c1_0
+2026-04-08 00:39:51 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.active,
+        p1_0.category,
+        p1_0.cost_price,
+        p1_0.description,
+        p1_0.discount,
+        p1_0.featured,
+        p1_0.image_url,
+        p1_0.name,
+        p1_0.on_sale,
+        p1_0.price,
+        p1_0.show_on_store,
+        p1_0.stock,
+        p1_0.tags,
+        p1_0.thumbnail_url,
+        p1_0.variations 
+    from
+        products p1_0
+2026-04-08 00:42:34 [http-nio-8080-exec-3] INFO  c.m.controller.PaymentController - Initialize payment request | email=immanuelderry31@gmail.com amount=46
+2026-04-08 00:42:34 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        transactions t1_0
+2026-04-08 00:42:34 [http-nio-8080-exec-3] DEBUG c.m.service.impl.PaystackServiceImpl - Initializing Paystack transaction | ref=STR-0026 amount=46
+2026-04-08 00:42:37 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        transactions
+        (access_code, amount, authorization_code, authorization_url, cancelled_at, cancelled_by_id, created_at, currency, description, email, metadata, module, online_status, paystack_id, reference, staff_id, status, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:42:37 [http-nio-8080-exec-3] INFO  c.m.service.impl.PaystackServiceImpl - Transaction saved | ref=STR-0026 status=PENDING
+2026-04-08 00:42:45 [http-nio-8080-exec-7] INFO  c.m.controller.PaymentController - Paystack callback received | ref=STR-0026
+2026-04-08 00:42:45 [http-nio-8080-exec-7] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0026
+2026-04-08 00:42:45 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:42:45 [http-nio-8080-exec-7] INFO  c.m.service.impl.PaystackServiceImpl - Transaction verified | ref=STR-0026 paystackStatus=success
+2026-04-08 00:42:45 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    update
+        transactions 
+    set
+        access_code=?,
+        amount=?,
+        authorization_code=?,
+        authorization_url=?,
+        cancelled_at=?,
+        cancelled_by_id=?,
+        currency=?,
+        description=?,
+        email=?,
+        metadata=?,
+        module=?,
+        online_status=?,
+        paystack_id=?,
+        reference=?,
+        staff_id=?,
+        status=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-08 00:42:46 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:42:47 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 00:42:47 [http-nio-8080-exec-8] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0026
+2026-04-08 00:42:47 [http-nio-8080-exec-8] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0026
+2026-04-08 00:42:47 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:42:47 [http-nio-8080-exec-3] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0026
+2026-04-08 00:42:47 [http-nio-8080-exec-3] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0026
+2026-04-08 00:42:47 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 00:42:47 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_orders
+        (address, created_at, customer_id, customer_email, customer_name, delivery_address, payment_method, payment_reference, phone, reference, status, status_changed_at, status_changed_by, total) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:42:47 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:42:47 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:42:47 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:42:47 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_orders
+        (address, created_at, customer_id, customer_email, customer_name, delivery_address, payment_method, payment_reference, phone, reference, status, status_changed_at, status_changed_by, total) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:42:47 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:42:47 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 00:42:47 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        store_order_items
+        (image_url, name, order_id, product_id, quantity, subtotal, unit_price) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-04-08 02:09:14 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 02:09:14 [http-nio-8080-exec-6] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0026
+2026-04-08 02:09:14 [http-nio-8080-exec-6] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0026
+2026-04-08 02:09:14 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?
+2026-04-08 02:09:14 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        sc1_0.id,
+        sc1_0.config_json,
+        sc1_0.updated_at 
+    from
+        store_config sc1_0 
+    where
+        sc1_0.id=?
+2026-04-08 02:09:14 [http-nio-8080-exec-2] INFO  c.m.controller.PaymentController - Verify transaction | ref=STR-0026
+2026-04-08 02:09:14 [http-nio-8080-exec-2] DEBUG c.m.service.impl.PaystackServiceImpl - Verifying transaction | ref=STR-0026
+2026-04-08 02:09:14 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        t1_0.access_code,
+        t1_0.amount,
+        t1_0.authorization_code,
+        t1_0.authorization_url,
+        t1_0.cancelled_at,
+        t1_0.cancelled_by_id,
+        t1_0.created_at,
+        t1_0.currency,
+        t1_0.description,
+        t1_0.email,
+        t1_0.metadata,
+        t1_0.module,
+        t1_0.online_status,
+        t1_0.paystack_id,
+        t1_0.reference,
+        t1_0.staff_id,
+        t1_0.status,
+        t1_0.updated_at 
+    from
+        transactions t1_0 
+    where
+        t1_0.reference=?

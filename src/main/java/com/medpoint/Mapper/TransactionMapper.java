@@ -6,6 +6,7 @@ import com.medpoint.entity.Transaction;
 import com.medpoint.entity.TransactionLineItem;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.util.List;
 
 @Component
@@ -25,7 +26,7 @@ public class TransactionMapper {
                         ? tx.getCancelledBy().getFirstName() + " " + tx.getCancelledBy().getLastName()
                         : null)
                 .cancelledAt(tx.getCancelledAt())
-                .createdAt(tx.getCreatedAt())
+                .createdAt(Instant.from(tx.getCreatedAt()))
                 .build();
     }
 
