@@ -26,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,37 +37,47 @@ import java.util.UUID;
 public class MartServiceImpl implements MartService {
 
     private static final int LOW_STOCK_THRESHOLD = 10;
-
     private final ProductRepository productRepo;
     private final UserRepository userRepo;
     private final TransactionRepository txRepo;
-
     @Value("${app.upload.dir:uploads}")
     private String uploadDir;
-
     @Value("${app.base-url:http://localhost:8080/api}")
     private String baseUrl;
+
 
     @Override
     public List<ProductResponse> getAllProducts() {
         return productRepo.findAll().stream().map(this::toResponse).toList();
     }
 
+
+
     @Override
     public ProductResponse getProductById(Long id) {
         return toResponse(findProduct(id));
     }
 
+
+
+
     @Override
     @Transactional
     public ProductResponse createProduct(ProductRequest req) {
         Product p = Product.builder()
-                .name(req.getName()).category(req.getCategory())
-                .price(req.getPrice()).costPrice(req.getCostPrice())
+                .name(req.getName())
+                .category(req.getCategory())
+                .price(req.getPrice())
+                .costPrice(req.getCostPrice())
                 .stock(req.getStock())
                 .imageUrl(req.getImageUrl())
                 .featured(req.isFeatured())
-                .discount(req.getDiscount())
+                .discount(
+                        req.getDiscount() != null
+                                ? req.getDiscount().getValue()
+                                : null
+                )
+                .discountType(req.getDiscountType())
                 .onSale(req.isOnSale())
                 .showOnStore(req.isShowOnStore())
                 .description(req.getDescription())
@@ -76,34 +87,175 @@ public class MartServiceImpl implements MartService {
         return toResponse(productRepo.save(p));
     }
 
+//    @Override
+//    @Transactional
+//    public ProductResponse createProduct(ProductRequest req) {
+//        Product p = Product.builder()
+//                .name(req.getName()).category(req.getCategory())
+//                .price(req.getPrice()).costPrice(req.getCostPrice())
+//                .stock(req.getStock())
+//                .imageUrl(req.getImageUrl())
+//                .featured(req.isFeatured())
+//                .discount(req.getDiscount())
+//                .onSale(req.isOnSale())
+//                .showOnStore(req.isShowOnStore())
+//                .description(req.getDescription())
+//                .tags(req.getTags())
+//                .variations(req.getVariations())
+//                .build();
+//        return toResponse(productRepo.save(p));
+//    }
+
+
+
+
+//    @Override
+//    @Transactional
+//    public ProductResponse updateProduct(Long id, ProductRequest req) {
+//        Product p = findProduct(id);
+//        p.setName(req.getName()); p.setCategory(req.getCategory());
+//        p.setPrice(req.getPrice()); p.setStock(req.getStock());
+//        p.setCostPrice(req.getCostPrice());
+//        p.setFeatured(req.isFeatured());
+//        p.setDiscount(req.getDiscount());
+//        p.setOnSale(req.isOnSale());
+//        p.setShowOnStore(req.isShowOnStore());
+//        p.setDescription(req.getDescription());
+//        p.setTags(req.getTags());
+//        p.setVariations(req.getVariations());
+//        // Only overwrite imageUrl if explicitly provided in request
+//        if (req.getImageUrl() != null) {
+//            p.setImageUrl(req.getImageUrl());
+//        }
+//        return toResponse(productRepo.save(p));
+//    }
+
+
+
+
+//    @Override
+//    @Transactional
+//    public ProductResponse updateProduct(Long id, ProductRequest req) {
+//
+//        Product p = findProduct(id);
+//
+//        p.setName(req.getName());
+//        p.setCategory(req.getCategory());
+//        p.setPrice(req.getPrice());
+//        p.setStock(req.getStock());
+//        p.setCostPrice(req.getCostPrice());
+//        p.setFeatured(req.isFeatured());
+//        p.setDiscount(req.getDiscount());
+//        p.setOnSale(req.isOnSale());
+//        p.setShowOnStore(req.isShowOnStore());
+//        p.setDescription(req.getDescription());
+//
+//        if (req.getTags() != null) {
+//            p.getTags().clear();
+//            p.getTags().addAll(req.getTags());
+//        }
+//
+//        if (req.getVariations() != null) {
+//            p.getVariations().clear();
+//            p.getVariations().addAll(req.getVariations());
+//        }
+//
+//        if (req.getImageUrl() != null) {
+//            p.setImageUrl(req.getImageUrl());
+//        }
+//
+//        return toResponse(productRepo.save(p));
+//    }
+
+
+
+
     @Override
     @Transactional
     public ProductResponse updateProduct(Long id, ProductRequest req) {
+
+        // Find the product
         Product p = findProduct(id);
-        p.setName(req.getName()); p.setCategory(req.getCategory());
-        p.setPrice(req.getPrice()); p.setStock(req.getStock());
+
+        // Prevent updates to inactive products (soft-deleted)
+        if (!p.isActive()) {
+            throw new IllegalStateException("Cannot update inactive product");
+        }
+
+        // Update basic fields
+        p.setName(req.getName());
+        p.setCategory(req.getCategory());
+        p.setPrice(req.getPrice());
+        p.setStock(req.getStock());
         p.setCostPrice(req.getCostPrice());
         p.setFeatured(req.isFeatured());
-        p.setDiscount(req.getDiscount());
         p.setOnSale(req.isOnSale());
         p.setShowOnStore(req.isShowOnStore());
         p.setDescription(req.getDescription());
-        p.setTags(req.getTags());
-        p.setVariations(req.getVariations());
-        // Only overwrite imageUrl if explicitly provided in request
+
+        // Handle DiscountDTO -> BigDecimal
+        if (req.getDiscount() != null) {
+            DiscountDTO disc = req.getDiscount();
+            BigDecimal value = disc.getValue(); // <-- use 'value' field from your DTO
+            if ("PERCENTAGE".equalsIgnoreCase(disc.getType())) {
+                value = value.divide(BigDecimal.valueOf(100));
+            }
+            p.setDiscount(value);
+        }
+
+        // Safely update tags collection
+        if (req.getTags() != null) {
+            p.setTags(String.join(",", req.getTags()));
+        }
+
+        if (req.getVariations() != null) {
+            p.setVariations(String.join(",", req.getVariations()));
+        }
+
+        // Only update image if explicitly provided
         if (req.getImageUrl() != null) {
             p.setImageUrl(req.getImageUrl());
         }
+
+        if (req.getDiscountType() != null) {
+            p.setDiscountType(req.getDiscountType());
+        }
+
+        // Save product and return response
         return toResponse(productRepo.save(p));
     }
+
+
+
+
+
+
+
+    @Override
+    @Transactional
+    public void deactivateProduct(Long id) {
+        Product p = findProduct(id);
+        p.setActive(false);
+        productRepo.save(p);
+    }
+
+
 
     @Override
     @Transactional
     public void deleteProduct(Long id) {
         Product p = findProduct(id);
-        p.setActive(false);
-        productRepo.save(p);
+        productRepo.deleteById(id);
+
     }
+
+
+
+
+
+
+
+
 
     @Override
     @Transactional
@@ -127,27 +279,18 @@ public class MartServiceImpl implements MartService {
     @Override
     @Transactional
     public String uploadProductImage(Long productId, MultipartFile file) {
-
         Product product = findProduct(productId);
-
         try {
-
             Path uploadPath = Paths.get(uploadDir, "products")
                     .toAbsolutePath()
                     .normalize();
-
             Files.createDirectories(uploadPath);
-
             String filenameBase = UUID.randomUUID().toString();
-
             String mainFilename = filenameBase + ".webp";
             String thumbFilename = filenameBase + "_thumb.webp";
-
             Path mainPath = uploadPath.resolve(mainFilename);
             Path thumbPath = uploadPath.resolve(thumbFilename);
-
             BufferedImage originalImage = ImageIO.read(file.getInputStream());
-
             if (originalImage == null) {
                 throw new BusinessException("Invalid image file");
             }
@@ -158,24 +301,18 @@ public class MartServiceImpl implements MartService {
                     .outputFormat("webp")
                     .outputQuality(0.8)
                     .toFile(mainPath.toFile());
-
             // Save thumbnail version (300px)
             Thumbnails.of(originalImage)
                     .size(300, 300)
                     .outputFormat("webp")
                     .outputQuality(0.75)
                     .toFile(thumbPath.toFile());
-
             String imageUrl = "/uploads/products/" + mainFilename;
             String thumbUrl = "/uploads/products/" + thumbFilename;
-
             product.setImageUrl(imageUrl);
             product.setThumbnailUrl(thumbUrl);
-
             productRepo.save(product);
-
             return imageUrl;
-
         } catch (IOException e) {
             throw new BusinessException("Failed to store image: " + e.getMessage());
         }
@@ -318,6 +455,7 @@ public class MartServiceImpl implements MartService {
                 .imageUrl(p.getImageUrl())
                 .featured(p.isFeatured())
                 .discount(p.getDiscount())
+                .discountType(p.getDiscountType())
                 .onSale(p.isOnSale())
                 .showOnStore(p.isShowOnStore())
                 .description(p.getDescription())
@@ -335,7 +473,7 @@ public class MartServiceImpl implements MartService {
                         .id(li.getId()).name(li.getName()).category(li.getCategory())
                         .kind(li.getKind()).quantity(li.getQuantity())
                         .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
-                .createdAt(Instant.from(t.getCreatedAt())).build();
+                .createdAt(t.getCreatedAt().atZone(ZoneId.systemDefault()).toInstant()).build();
     }
 
 

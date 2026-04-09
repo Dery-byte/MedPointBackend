@@ -1,5 +1,6 @@
 package com.medpoint.dto.request;
 
+import com.medpoint.enums.DiscountType;
 import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Data;
@@ -15,10 +16,13 @@ public class ProductRequest {
     private BigDecimal costPrice;
     @Min(0) private int stock;
 
+    private DiscountDTO discount;
+    private DiscountType discountType;
+
     // Storefront fields
     private String imageUrl;
     private boolean featured;
-    private BigDecimal discount;
+//    private BigDecimal discount;
     private boolean onSale;
     private boolean showOnStore = true;
     private String description;

@@ -28,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
@@ -106,21 +107,35 @@ public class TransactionServiceImpl implements TransactionService {
         tx.setCancelledAt(Instant.now());
         return toResponse(txRepo.save(tx));
     }
-
-    private TransactionResponse toResponse(Transaction t) {
-        return TransactionResponse.builder()
-                .id(t.getId()).reference(t.getReference()).module(t.getModule())
-                .amount(t.getAmount()).staffName(t.getStaff().getName())
-                .description(t.getDescription()).status(t.getStatus())
-                .lineItems(t.getLineItems().stream().map(li -> TransactionResponse.LineItemDto.builder()
-                        .id(li.getId()).name(li.getName()).category(li.getCategory())
-                        .kind(li.getKind()).quantity(li.getQuantity())
-                        .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
-                .cancelledByName(t.getCancelledBy() != null ? t.getCancelledBy().getName() : null)
-                .cancelledAt(t.getCancelledAt()).createdAt(Instant.from(t.getCreatedAt())).build();
-    }
-
-
+//
+//    private TransactionResponse toResponse(Transaction t) {
+//        return TransactionResponse.builder()
+//                .id(t.getId()).reference(t.getReference()).module(t.getModule())
+//                .amount(t.getAmount()).staffName(t.getStaff().getName())
+//                .description(t.getDescription()).status(t.getStatus())
+//                .lineItems(t.getLineItems().stream().map(li -> TransactionResponse.LineItemDto.builder()
+//                        .id(li.getId()).name(li.getName()).category(li.getCategory())
+//                        .kind(li.getKind()).quantity(li.getQuantity())
+//                        .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
+//                .cancelledByName(t.getCancelledBy() != null ? t.getCancelledBy().getName() : null)
+//                .cancelledAt(t.getCancelledAt()).createdAt(Instant.from(t.getCreatedAt())).build();
+//    }
+//
+private TransactionResponse toResponse(Transaction t) {
+    User staff = t.getStaff();
+    User cancelledBy = t.getCancelledBy();
+    return TransactionResponse.builder()
+            .id(t.getId()).reference(t.getReference()).module(t.getModule())
+            .amount(t.getAmount())
+            .staffName(staff != null ? staff.getName() : null)
+            .description(t.getDescription()).status(t.getStatus())
+            .lineItems(t.getLineItems().stream().map(li -> TransactionResponse.LineItemDto.builder()
+                    .id(li.getId()).name(li.getName()).category(li.getCategory())
+                    .kind(li.getKind()).quantity(li.getQuantity())
+                    .unitPrice(li.getUnitPrice()).subtotal(li.getSubtotal()).build()).toList())
+            .cancelledByName(cancelledBy != null ? cancelledBy.getName() : null)
+            .cancelledAt(t.getCancelledAt()).createdAt(t.getCreatedAt().atZone(ZoneId.systemDefault()).toInstant()).build();
+}
 
 
 

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,28 +26,56 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
 
 
+//    @Query("""
+//        SELECT t FROM Transaction t
+//        WHERE (:module IS NULL OR t.module = :module)
+//          AND (:status IS NULL OR t.status = :status)
+//          AND (:staffId IS NULL OR t.staff.id = :staffId)
+//          AND (:from   IS NULL OR t.createdAt >= :from)
+//          AND (:to     IS NULL OR t.createdAt <= :to)
+//        ORDER BY t.createdAt DESC
+//    """)
+//    List<Transaction> findAllFiltered(
+//            @Param("module")  TxModule module,
+//            @Param("status")  TransactionStatus status,
+//            @Param("staffId") Long staffId,
+//            @Param("from")    Instant from,
+//            @Param("to")      Instant to
+//    );
+
+//    @Query("""
+//    SELECT t FROM Transaction t
+//    WHERE (:module IS NULL OR t.module = :module)
+//      AND t.status = :status
+//      AND (:staffId IS NULL OR t.staff.id = :staffId)
+//      AND (:from IS NULL OR t.createdAt >= :from)
+//      AND (:to IS NULL OR t.createdAt < :to)
+//""")
+//    List<Transaction> findAllFiltered(
+//            @Param("module") String module,
+//            @Param("status") TransactionStatus status,
+//            @Param("staffId") Long staffId,
+//            @Param("from") LocalDateTime from,
+//            @Param("to") LocalDateTime to
+//    );
+
+
+
     @Query("""
-        SELECT t FROM Transaction t
-        WHERE (:module IS NULL OR t.module = :module)
-          AND (:status IS NULL OR t.status = :status)
-          AND (:staffId IS NULL OR t.staff.id = :staffId)
-          AND (:from   IS NULL OR t.createdAt >= :from)
-          AND (:to     IS NULL OR t.createdAt <= :to)
-        ORDER BY t.createdAt DESC
-    """)
+    SELECT t FROM Transaction t
+    WHERE (:module IS NULL OR t.module = :module)
+      AND t.status = :status
+      AND (:staffId IS NULL OR t.staff.id = :staffId)
+      AND (:from IS NULL OR t.createdAt >= :from)
+      AND (:to IS NULL OR t.createdAt < :to)
+""")
     List<Transaction> findAllFiltered(
-            @Param("module")  TxModule module,
-            @Param("status")  TransactionStatus status,
+            @Param("module") TxModule module,
+            @Param("status") TransactionStatus status,
             @Param("staffId") Long staffId,
-            @Param("from")    Instant from,
-            @Param("to")      Instant to
+            @Param("from") LocalDateTime from,
+            @Param("to") LocalDateTime to
     );
-
-
-
-
-
-
     boolean existsByReference(String reference);
 
 
