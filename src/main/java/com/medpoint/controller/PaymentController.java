@@ -1,11 +1,11 @@
 package com.medpoint.controller;
 import com.medpoint.dto.paystackdto.InitializePaymentRequest;
-import com.medpoint.dto.paystackdto.PaymentResponse;
 import com.medpoint.dto.response.StorePaymentResponse;
 import com.medpoint.service.PaystackService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +33,12 @@ public class PaymentController {
      * Initialize a new payment transaction.
      * Returns authorizationUrl to redirect the customer to, plus accessCode for Popup JS.
      */
+
+
+
+    @Value("${app.front-end}")
+    private String frontendUrl;
+
     @PostMapping("/initialize")
     public ResponseEntity<StorePaymentResponse> initialize(
             @Valid @RequestBody InitializePaymentRequest request) {
@@ -77,8 +83,8 @@ public class PaymentController {
         paystackService.verifyTransaction(reference);
         // Redirect to frontend success page
         HttpHeaders headers = new HttpHeaders();
-//        headers.setLocation(URI.create("http://localhost:3000/payment/success?reference=" + reference));
-        headers.setLocation(URI.create("http://localhost:5173/order-confirmation?reference=" + reference));
+        String redirectUrl = frontendUrl + "/order-confirmation?reference=" + reference;
+        headers.setLocation(URI.create(redirectUrl));
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 }

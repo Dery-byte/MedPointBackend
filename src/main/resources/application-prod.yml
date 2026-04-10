@@ -50,8 +50,12 @@ app:
   upload:
     dir: uploads
   base-url: https://medpointbackend-k6k3.onrender.com/api
+  front-end: https://med-point-front-end.vercel.app
   dev-mode: false
 server:
   port: 8080
   servlet:
     context-path: /api
+jwt:
+  secret: medpoint-super-secret-key-must-be-at-least-256-bits-long-change-in-prod
+  expiration-ms: 86400000

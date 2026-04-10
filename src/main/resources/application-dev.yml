@@ -62,3 +62,20 @@ paystack:
   public-key: ${PAYSTACK_PUBLIC_KEY}
   base-url: https://api.paystack.co
   callback-url: http://localhost:8080/api/payments/callback
+  app:
+    upload:
+      dir: uploads
+    front-end: http://localhost:5173
+    base-url: http://localhost:8080/api
+    dev-mode: false
+  server:
+    port: 8080
+    servlet:
+      context-path: /api
+  jwt:
+    secret: medpoint-super-secret-key-must-be-at-least-256-bits-long-change-in-prod
+    expiration-ms: 86400000
+  logging:
+    level:
+      com.medpoint: DEBUG
+      org.springframework.security: WARN
