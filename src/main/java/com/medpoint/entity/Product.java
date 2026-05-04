@@ -1,5 +1,6 @@
 package com.medpoint.entity;
 
+import com.medpoint.enums.DiscountType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -73,4 +74,8 @@ public class Product {
     /** JSON string: [{name, options:[{label, price, stock, colorHex}]}] */
     @Column(nullable = true, columnDefinition = "TEXT")
     private String variations;
+
+    @Column(nullable = true)
+    @Enumerated(EnumType.STRING)
+    private DiscountType discountType;
 }

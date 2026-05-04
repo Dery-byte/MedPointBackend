@@ -87,7 +87,6 @@ logging:
               BasicBinder: TRACE
   file:
     name: logs/medpoint.log
-
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 <<<<<<< HEAD

@@ -1,5 +1,6 @@
 package com.medpoint.dto.response;
 
+import com.medpoint.enums.DiscountType;
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,6 +21,7 @@ public class ProductResponse {
     private String imageUrl;
     private boolean featured;
     private BigDecimal discount;
+    private DiscountType discountType;
     private boolean onSale;
     private boolean showOnStore;
     private String description;

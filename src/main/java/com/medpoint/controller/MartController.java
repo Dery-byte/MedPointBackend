@@ -60,12 +60,27 @@ public class MartController {
         return ResponseEntity.ok(martService.updateProduct(id, request));
     }
 
+
+
+
+
     @DeleteMapping("/products/{id}")
     @PreAuthorize("hasRole('SUPERADMIN') or @permissionGuard.canManageMart(authentication)")
     public ResponseEntity<ApiResponse<Void>> deleteProduct(@PathVariable Long id) {
         martService.deleteProduct(id);
         return ResponseEntity.ok(ApiResponse.ok("Product deleted."));
     }
+
+
+
+
+
+
+
+
+
+
+
 
     @PatchMapping("/products/{id}/restock")
     @PreAuthorize("hasRole('SUPERADMIN') or @permissionGuard.canManageMart(authentication)")

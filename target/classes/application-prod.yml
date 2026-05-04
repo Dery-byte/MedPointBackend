@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://mysql-207432-0.cloudclusters.net:10047/medpointdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://mysql-210283-0.cloudclusters.net:10025/medpointdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: mudita
     password: EMM@RESCUe12
@@ -14,7 +14,6 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
   mail:
     host: smtp.gmail.com
     port: 587
@@ -53,5 +52,18 @@ paystack:
   secret-key: ${PAYSTACK_SECRET_KEY}
   public-key: ${PAYSTACK_PUBLIC_KEY}
   base-url: https://api.paystack.co
+<<<<<<< HEAD
   callback-url: http://localhost:8080/api/payments/callback
 >>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
+=======
+  callback-url: https://medpointbackend-k6k3.onrender.com/api/payments/callback
+app:
+  upload:
+    dir: uploads
+  base-url: https://medpointbackend-k6k3.onrender.com/api
+  dev-mode: false
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+>>>>>>> 4b99b71aa3710c2053b3f04c0d9cbc53eab618b1

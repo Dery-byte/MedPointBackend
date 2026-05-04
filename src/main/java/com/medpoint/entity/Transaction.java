@@ -61,7 +61,7 @@ public class Transaction {
 
 
     /** Customer email */
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String email;
 
     /**
@@ -82,7 +82,7 @@ public class Transaction {
      *   ABANDONED – customer closed checkout
      */
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = true)
     private OnlineTransactionStatus onlineStatus;
 
     /** Paystack authorization URL returned on initialization */

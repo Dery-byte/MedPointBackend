@@ -9,7 +9,15 @@ public interface MartService {
     ProductResponse getProductById(Long id);
     ProductResponse createProduct(ProductRequest request);
     ProductResponse updateProduct(Long id, ProductRequest request);
+
+
+
     void deleteProduct(Long id);
+
+
+
+
+    void deactivateProduct(Long id);
     ProductResponse restockProduct(Long id, RestockRequest request);
     ProductResponse updateProductPrice(Long id, PriceUpdateRequest request);
 

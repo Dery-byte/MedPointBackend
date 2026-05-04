@@ -2,6 +2,7 @@ spring:
   application:
     name: medpoint-backend
   profiles:
+<<<<<<< HEAD
     active: dev
   jpa:
     show-sql: false
@@ -47,45 +48,11 @@ logging:
     com.medpoint: DEBUG
     org.springframework.security: WARN
 
+=======
+    active: prod
+>>>>>>> 4b99b71aa3710c2053b3f04c0d9cbc53eab618b1
 ---
 spring:
   config:
     activate:
-      on-profile: dev
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: your-email@gmail.com
-    password: your-app-password
-    properties:
-      mail.smtp.starttls.enable: true
-  datasource:
-    url: jdbc:mysql://localhost:3306/medpointdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: EMMARESCUE
-app:
-  dev-mode: true
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-
----
-#spring:
-#  config:
-#    activate:
-#      on-profile: prod
-#  datasource:
-#    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:medpointdb}?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: ${DB_USERNAME:medpoint}
-#    password: ${DB_PASSWORD:medpoint}
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQLDialect
+      on-profile: prod
