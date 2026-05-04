@@ -2,4 +2,4 @@ spring:
   application:
     name: medpoint-backend
   profiles:
-    active: prod
+    active: dev

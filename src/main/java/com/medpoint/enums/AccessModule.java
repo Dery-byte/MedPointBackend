@@ -8,6 +8,7 @@ public enum AccessModule {
     DRUGSTORE,
     MART,
     HOTEL,
+    STOREFRONT,
     RESTAURANT;
     public String toKey() { return name().toLowerCase(); }
 }
