@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://mysql-210283-0.cloudclusters.net:10025/medpointdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://mysql-210992-0.cloudclusters.net:10031/medpointdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: mudita
     password: EMM@RESCUe12
@@ -14,6 +14,7 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
   mail:
     host: smtp.gmail.com
     port: 587
@@ -26,44 +27,41 @@ spring:
         smtp:
           auth: true
           starttls:
-            enable: true       # ✅ corrected
-            required: true     # ✅ optional but good to include
+            enable: true
+            required: true
           connectiontimeout: 5000
           timeout: 3000
           writetimeout: 5000
           ssl:
             trust: smtp.gmail.com
-<<<<<<< HEAD
 
-=======
->>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
 logging:
   level:
     com.medpoint: INFO
+
 mnotify:
   v2:
     url: https://api.mnotify.com/api/sms/quick
     key: oWmpfPGz22BObP6ng9Zjb0Xe4
-<<<<<<< HEAD
-    sender-id: OPTUMSERV
-=======
     sender-id: OPTUMSERV
 paystack:
   secret-key: ${PAYSTACK_SECRET_KEY}
   public-key: ${PAYSTACK_PUBLIC_KEY}
   base-url: https://api.paystack.co
-<<<<<<< HEAD
-  callback-url: http://localhost:8080/api/payments/callback
->>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
-=======
   callback-url: https://medpointbackend-k6k3.onrender.com/api/payments/callback
+
 app:
   upload:
     dir: uploads
   base-url: https://medpointbackend-k6k3.onrender.com/api
+  front-end: https://med-point-front-end.vercel.app
   dev-mode: false
+
 server:
   port: 8080
   servlet:
     context-path: /api
->>>>>>> 4b99b71aa3710c2053b3f04c0d9cbc53eab618b1
+
+jwt:
+  secret: medpoint-super-secret-key-must-be-at-least-256-bits-long-change-in-prod
+  expiration-ms: 86400000

@@ -25,14 +25,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-<<<<<<< HEAD
-=======
 import java.time.Instant;
-<<<<<<< HEAD
->>>>>>> 3fb1b86c2d929ab2b748bf99fc540ac3025b120a
-=======
 import java.time.ZoneId;
->>>>>>> 4b99b71aa3710c2053b3f04c0d9cbc53eab618b1
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
